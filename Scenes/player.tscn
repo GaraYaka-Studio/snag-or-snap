@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmuxx3yk174tw"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_ivdky"]
+[ext_resource type="Texture2D" uid="uid://bihxdqsye42mp" path="res://Assets/Sprites/Player.png" id="1_k0e6c"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ivdky")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k0e6c")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-14, -24, -14, -23, -15, -23, -15, -22, -16, -22, -16, -21, -17, -21, -17, 8, -16, 8, -16, 11, -15, 11, -15, 12, -14, 12, -14, 13, -12, 13, -12, 14, -11, 14, -11, 15, -10, 15, -10, 16, -9, 16, -9, 17, -8, 17, -8, 18, -4, 18, -4, 19, 4, 19, 4, 18, 8, 18, 8, 17, 9, 17, 9, 16, 10, 16, 10, 15, 11, 15, 11, 14, 12, 14, 12, 13, 14, 13, 14, 12, 15, 12, 15, 11, 16, 11, 16, 8, 17, 8, 17, -21, 16, -21, 16, -22, 15, -22, 15, -23, 14, -23, 14, -24, 13, -24, 13, -23, 12, -23, 12, -22, 11, -22, 11, -23, 10, -23, 10, -22, 9, -22, 9, -21, 7, -21, 7, -22, 6, -22, 6, -23, 5, -23, 5, -22, 3, -22, 3, -21, 2, -21, 2, -20, 1, -20, 1, -19, -1, -19, -1, -20, -2, -20, -2, -21, -3, -21, -3, -22, -5, -22, -5, -23, -6, -23, -6, -22, -7, -22, -7, -21, -9, -21, -9, -22, -10, -22, -10, -23, -11, -23, -11, -22, -12, -22, -12, -23, -13, -23, -13, -24)
+
+[node name="Net" type="RayCast2D" parent="."]
+target_position = Vector2(0, -45)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

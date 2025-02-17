@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://2goqufhp48ok"]
+
+[ext_resource type="Script" uid="uid://dxh0tjlemy0pd" path="res://Scripts/boot_splash.gd" id="1_pagog"]
+[ext_resource type="Texture2D" uid="uid://dwjtfje87gety" path="res://Assets/Banner.png" id="1_ykkco"]
+
+[sub_resource type="Animation" id="Animation_1hupv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Window:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vky7h"]
+resource_name = "dissolve"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Window:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_odbwx"]
+_data = {
+"RESET": SubResource("Animation_1hupv"),
+"dissolve": SubResource("Animation_vky7h")
+}
+
+[node name="Boot Splash" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_pagog")
+
+[node name="Banner" type="Sprite2D" parent="."]
+position = Vector2(320, 184)
+texture = ExtResource("1_ykkco")
+
+[node name="Window" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_odbwx")
+}
+autoplay = "dissolve"

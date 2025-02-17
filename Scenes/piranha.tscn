@@ -1,0 +1,117 @@
+[gd_scene load_steps=13 format=3 uid="uid://c6p6coxyp08ij"]
+
+[ext_resource type="Texture2D" uid="uid://c2bw5rfkif61n" path="res://Assets/Sprites/Piranhas.png" id="1_3vgjf"]
+[ext_resource type="Script" uid="uid://6d5bqetngv2m" path="res://Scripts/piranha.gd" id="1_fe11v"]
+[ext_resource type="PackedScene" uid="uid://cmuxx3yk174tw" path="res://Scenes/player.tscn" id="2_qr3wn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w647t"]
+atlas = ExtResource("1_3vgjf")
+region = Rect2(0, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqojc"]
+atlas = ExtResource("1_3vgjf")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8w51"]
+atlas = ExtResource("1_3vgjf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbg85"]
+atlas = ExtResource("1_3vgjf")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1jbm"]
+atlas = ExtResource("1_3vgjf")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lys0"]
+atlas = ExtResource("1_3vgjf")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ljyh"]
+atlas = ExtResource("1_3vgjf")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ae40l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w647t")
+}],
+"loop": true,
+"name": &"black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqojc")
+}],
+"loop": true,
+"name": &"brown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8w51")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbg85")
+}],
+"loop": true,
+"name": &"grey",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1jbm")
+}],
+"loop": true,
+"name": &"lime",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lys0")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ljyh")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j2owv"]
+radius = 17.0
+height = 70.0
+
+[node name="Piranha" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_fe11v")
+player_scene = ExtResource("2_qr3wn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ae40l")
+animation = &"yellow"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_j2owv")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(3.5, 1.7)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_screen_exited"]

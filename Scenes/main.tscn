@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://4krjneu1vxw"]
+
+[ext_resource type="Script" uid="uid://cbngyjida4sba" path="res://Scripts/main.gd" id="1_aif4a"]
+[ext_resource type="Texture2D" uid="uid://j22he27mnqw6" path="res://Assets/Background.png" id="1_rkt7w"]
+[ext_resource type="PackedScene" uid="uid://cmuxx3yk174tw" path="res://Scenes/player.tscn" id="2_1hrj1"]
+[ext_resource type="PackedScene" uid="uid://c6p6coxyp08ij" path="res://Scenes/piranha.tscn" id="3_oaetq"]
+
+[sub_resource type="Curve2D" id="Curve2D_3dosv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 640, 0, 0, 0, 0, 0, 640, 359, 0, 0, 0, 0, 1, 360, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_aif4a")
+mob_scene = ExtResource("3_oaetq")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("1_rkt7w")
+
+[node name="Player" parent="." instance=ExtResource("2_1hrj1")]
+position = Vector2(320, 200)
+
+[node name="Mob Elements" type="Node" parent="."]
+
+[node name="Mob Path" type="Path2D" parent="Mob Elements"]
+curve = SubResource("Curve2D_3dosv")
+
+[node name="Mob Spawn" type="PathFollow2D" parent="Mob Elements/Mob Path"]
+
+[node name="Mob Timer" type="Timer" parent="Mob Elements"]
+
+[connection signal="timeout" from="Mob Elements/Mob Timer" to="." method="_on_mob_timer_timeout"]
