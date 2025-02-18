@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name Piranha
+
 @export var player_scene: PackedScene
 
 @export var min_speed: float = 150.0
