@@ -5,7 +5,6 @@ extends Node2D
 @onready var mob_spawn: PathFollow2D = $"Mob Elements/Mob Path/Mob Spawn"
 @onready var mob_timer: Timer = $"Mob Elements/Mob Timer"
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	mob_timer.start()
 
