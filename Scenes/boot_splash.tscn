@@ -36,8 +36,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_odbwx"]
 _data = {
-"RESET": SubResource("Animation_1hupv"),
-"dissolve": SubResource("Animation_vky7h")
+&"RESET": SubResource("Animation_1hupv"),
+&"dissolve": SubResource("Animation_vky7h")
 }
 
 [node name="Boot Splash" type="ColorRect"]

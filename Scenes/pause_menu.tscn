@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://d11mpmk81tckv"]
 
 [ext_resource type="Theme" uid="uid://ccv886hidycly" path="res://Assets/Themes/snagpy.tres" id="1_du3pb"]
-[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="2_4jwdm"]
-[ext_resource type="Shader" path="res://Assets/Shaders/pause_menu.gdshader" id="2_rbmgk"]
+[ext_resource type="Script" uid="uid://bwodvfrbx55sx" path="res://Scripts/pause_menu.gd" id="2_4jwdm"]
+[ext_resource type="Shader" uid="uid://dv5drwts6kxvv" path="res://Assets/Shaders/pause_menu.gdshader" id="2_rbmgk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ouqpe"]
 shader = ExtResource("2_rbmgk")
-shader_parameter/blur_amount = null
+shader_parameter/blur_amount = 0.0
 shader_parameter/mix_amount = 1.0
 shader_parameter/color_over = Color(0, 0, 0, 0)
 
@@ -69,8 +69,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gj7ea"]
 _data = {
-"RESET": SubResource("Animation_oerpk"),
-"blur": SubResource("Animation_dvs8j")
+&"RESET": SubResource("Animation_oerpk"),
+&"blur": SubResource("Animation_dvs8j")
 }
 
 [node name="Pause Menu" type="Control"]
