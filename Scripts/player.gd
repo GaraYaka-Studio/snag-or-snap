@@ -25,9 +25,12 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 	if net.is_colliding():
+		net.enabled = false
 		var collided_mob: Piranha = net.get_collider()
 		if collided_mob and collided_mob is RigidBody2D:
 			collided_mob.queue_free()
+		await get_tree().create_timer(0.1).timeout
+		net.enabled = true
 
 func _on_body_entered(_body: Node2D) -> void:
 	hide()
