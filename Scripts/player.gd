@@ -27,9 +27,7 @@ func _physics_process(_delta: float) -> void:
 	if net.is_colliding():
 		var collided_mob: Piranha = net.get_collider()
 		if collided_mob and collided_mob is RigidBody2D:
-			collided_mob.hide()
-			if collided_mob.has_method("set_deferred"):
-				collided_mob.set_deferred("disabled", true)
+			collided_mob.queue_free()
 
 func _on_body_entered(_body: Node2D) -> void:
 	hide()
