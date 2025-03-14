@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal caught
+
 @onready var collision_polygon: CollisionPolygon2D = $Area2D/CollisionPolygon2D
 @onready var net: RayCast2D = $Net
 
@@ -29,11 +31,11 @@ func _physics_process(_delta: float) -> void:
 		var collided_mob: Piranha = net.get_collider()
 		if collided_mob and collided_mob is RigidBody2D:
 			collided_mob.queue_free()
+		emit_signal("caught")
 		await get_tree().create_timer(0.1).timeout
 		net.enabled = true
 
 func _on_body_entered(_body: Node2D) -> void:
-	hide()
-	collision_polygon.set_deferred("disabled", true)
+	queue_free()
 	Engine.set_time_scale(0.5)
 	TransitionScreen.change_scene("res://Scenes/start_screen.tscn")
