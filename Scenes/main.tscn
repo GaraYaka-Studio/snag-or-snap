@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://4krjneu1vxw"]
+[gd_scene load_steps=10 format=3 uid="uid://4krjneu1vxw"]
 
 [ext_resource type="Script" uid="uid://cbngyjida4sba" path="res://Scripts/main.gd" id="1_aif4a"]
 [ext_resource type="Texture2D" uid="uid://j22he27mnqw6" path="res://Assets/Background.png" id="1_rkt7w"]
 [ext_resource type="PackedScene" uid="uid://cmuxx3yk174tw" path="res://Scenes/player.tscn" id="2_1hrj1"]
-[ext_resource type="Script" uid="uid://qr4w427bose6" path="res://Scripts/game_manager.gd" id="3_21xkr"]
+[ext_resource type="Script" uid="uid://cp14bichtmk5a" path="res://Scripts/game_manager.gd" id="3_21xkr"]
 [ext_resource type="PackedScene" uid="uid://c6p6coxyp08ij" path="res://Scenes/piranha.tscn" id="3_oaetq"]
 [ext_resource type="Theme" uid="uid://ccv886hidycly" path="res://Assets/Themes/snagpy.tres" id="4_6bp64"]
 [ext_resource type="PackedScene" uid="uid://d11mpmk81tckv" path="res://Scenes/pause_menu.tscn" id="5_3dkl3"]
+
+[sub_resource type="SystemFont" id="SystemFont_6bp64"]
 
 [sub_resource type="Curve2D" id="Curve2D_3dosv"]
 _data = {
@@ -30,6 +32,7 @@ offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
 theme = ExtResource("4_6bp64")
+theme_override_fonts/font = SubResource("SystemFont_6bp64")
 theme_override_font_sizes/font_size = 48
 text = "0"
 horizontal_alignment = 1
